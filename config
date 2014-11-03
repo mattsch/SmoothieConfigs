@@ -2,7 +2,7 @@
 
 arm_solution                                 linear_delta     # delta selection
 arm_length                                   216.47           # this is the length of an arm from hinge to hinge
-arm_radius                                   114.75           # this is the horiontal distance from hinge to hinge when the effector is centered
+arm_radius                                   114.50           # this is the horiontal distance from hinge to hinge when the effector is centered
 
 default_feed_rate                            4000             # Default rate ( mm/minute ) for G1/G2/G3 moves
 default_seek_rate                            4000             # Default rate ( mm/minute ) for G0 moves
@@ -142,7 +142,7 @@ beta_max                                     0                #
 gamma_max_endstop                            1.28^            #
 gamma_homing_direction                       home_to_max      #
 gamma_min                                    0                #
-gamma_max                                    238.37            # change to suit your height
+gamma_max                                    238.30            # change to suit your height
 
 #probe endstop
 #probe_pin                                   1.29             # optional pin for probe
@@ -158,9 +158,9 @@ alpha_homing_retract_mm                      5                # distance in mm
 beta_homing_retract_mm                       5                # "
 gamma_homing_retract_mm                      5                # "
 
-alpha_trim                                   -1.32              # software trim for alpha stepper endstop (in mm) - moves down
-beta_trim                                    -0.32              # software trim for beta stepper endstop (in mm)
-gamma_trim                                   -1.32              # software trim for gamma stepper endstop (in mm)
+alpha_trim                                   -1.30              # software trim for alpha stepper endstop (in mm) - moves down
+beta_trim                                    -0.65              # software trim for beta stepper endstop (in mm)
+gamma_trim                                   -1.42              # software trim for gamma stepper endstop (in mm)
 
 # optional Z probe http://smoothieware.org/zprobe
 zprobe.enable                                false           # set to true to enable a zprobe
