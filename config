@@ -142,7 +142,7 @@ beta_max                                     0                #
 gamma_max_endstop                            1.28^            #
 gamma_homing_direction                       home_to_max      #
 gamma_min                                    0                #
-gamma_max                                    238.30           # change to suit your height
+gamma_max                                    237.58           # change to suit your height
 
 #probe endstop
 #probe_pin                                   1.29             # optional pin for probe
@@ -158,9 +158,9 @@ alpha_homing_retract_mm                      5                # distance in mm
 beta_homing_retract_mm                       5                # "
 gamma_homing_retract_mm                      5                # "
 
-alpha_trim                                   -1.29              # software trim for alpha stepper endstop (in mm) - moves down
-beta_trim                                    -0.67              # software trim for beta stepper endstop (in mm)
-gamma_trim                                   -1.47              # software trim for gamma stepper endstop (in mm)
+alpha_trim                                   -1.57              # software trim for alpha stepper endstop (in mm) - moves down
+beta_trim                                    -1.15              # software trim for beta stepper endstop (in mm)
+gamma_trim                                   -1.35              # software trim for gamma stepper endstop (in mm)
 
 # optional Z probe http://smoothieware.org/zprobe
 zprobe.enable                                false           # set to true to enable a zprobe
