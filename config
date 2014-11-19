@@ -2,7 +2,7 @@
 
 arm_solution                                 linear_delta     # delta selection
 arm_length                                   216.47           # this is the length of an arm from hinge to hinge
-arm_radius                                   114.50           # this is the horiontal distance from hinge to hinge when the effector is centered
+arm_radius                                   114.35           # this is the horiontal distance from hinge to hinge when the effector is centered
 
 default_feed_rate                            4000             # Default rate ( mm/minute ) for G1/G2/G3 moves
 default_seek_rate                            4000             # Default rate ( mm/minute ) for G0 moves
@@ -17,7 +17,7 @@ gamma_steps_per_mm                           160             # Steps per mm for 
 
 # Planner module configuration : Look-ahead and acceleration configuration
 planner_queue_size                           32               # DO NOT CHANGE THIS UNLESS YOU KNOW EXACTLY WHAT YOUR ARE DOING
-acceleration                                 3000             # Acceleration in mm/second/second.
+acceleration                                 2000             # Acceleration in mm/second/second.
 acceleration_ticks_per_second                1000             # Number of times per second the speed is updated
 junction_deviation                           0.05             # Similar to the old "max_jerk", in millimeters, see : https://github.com/grbl/grbl/blob/master/planner.c#L409
                                                               # and https://github.com/grbl/grbl/wiki/Configuring-Grbl-v0.8 . Lower values mean being more careful, higher values means being faster and have more jerk
@@ -56,15 +56,15 @@ second_usb_serial_enable                     false            # This enables a s
 
 # Extruder module configuration
 extruder_module_enable                       true             # Whether to activate the extruder module at all. All configuration is ignored if false
-extruder_steps_per_mm                        326.184          # Steps per mm for extruder stepper
+extruder_steps_per_mm                        809.82          # Steps per mm for extruder stepper
 extruder_default_feed_rate                   600              # Default rate ( mm/minute ) for moves where only the extruder moves
 extruder_acceleration                        3000             # Acceleration in mm/sec^2 only used for retracts
-extruder_max_speed                           30               # mm/sec NOTE only used for retracts
+extruder_max_speed                           25               # mm/sec NOTE only used for retracts
 
 extruder_step_pin                            2.0              # Pin for extruder step signal
-extruder_dir_pin                             0.5!             # Pin for extruder dir signal
+extruder_dir_pin                             0.5              # Pin for extruder dir signal
 extruder_en_pin                              0.4              # Pin for extruder enable signal
-delta_current                                1.0              # Extruder stepper motor current
+delta_current                                0.7              # Extruder stepper motor current
 
 # Laser module configuration
 laser_module_enable                          false            # Whether to activate the laser module at all. All configuration is ignored if false.
@@ -84,9 +84,9 @@ temperature_control.hotend.set_and_wait_m_code 109            #
 temperature_control.hotend.designator        T                #
 
 #P39.98 I5.00 D79.91
-temperature_control.hotend.p_factor          62.8716          #
-temperature_control.hotend.i_factor          6.0453           #
-temperature_control.hotend.d_factor          163.4661         #
+temperature_control.hotend.p_factor          54.59          #
+temperature_control.hotend.i_factor          5.3            #
+temperature_control.hotend.d_factor          140.57         #
 
 # For bed
 temperature_control.bed.enable               false            #
@@ -142,7 +142,7 @@ beta_max                                     0                #
 gamma_max_endstop                            1.28^            #
 gamma_homing_direction                       home_to_max      #
 gamma_min                                    0                #
-gamma_max                                    237.61           # change to suit your height
+gamma_max                                    195.57           # change to suit your height
 
 #probe endstop
 #probe_pin                                   1.29             # optional pin for probe
@@ -150,17 +150,17 @@ gamma_max                                    237.61           # change to suit y
 alpha_fast_homing_rate_mm_s                  100              # feedrates in mm/second
 beta_fast_homing_rate_mm_s                   100              # "
 gamma_fast_homing_rate_mm_s                  100              # "
-alpha_slow_homing_rate_mm_s                  10               # "
-beta_slow_homing_rate_mm_s                   10               # "
-gamma_slow_homing_rate_mm_s                  10               # "
+alpha_slow_homing_rate_mm_s                  5               # "
+beta_slow_homing_rate_mm_s                   5               # "
+gamma_slow_homing_rate_mm_s                  5               # "
 
 alpha_homing_retract_mm                      5                # distance in mm
 beta_homing_retract_mm                       5                # "
 gamma_homing_retract_mm                      5                # "
 
-alpha_trim                                   -1.76              # software trim for alpha stepper endstop (in mm) - moves down
-beta_trim                                    -1.15              # software trim for beta stepper endstop (in mm)
-gamma_trim                                   -1.49              # software trim for gamma stepper endstop (in mm)
+alpha_trim                                   -1.31              # software trim for alpha stepper endstop (in mm) - moves down
+beta_trim                                    -2.12              # software trim for beta stepper endstop (in mm)
+gamma_trim                                   -1.84              # software trim for gamma stepper endstop (in mm)
 
 # optional Z probe http://smoothieware.org/zprobe
 zprobe.enable                                false           # set to true to enable a zprobe
