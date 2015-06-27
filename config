@@ -1,8 +1,8 @@
 # Robot module configurations : general handling of movement G-codes and slicing into moves
 
 arm_solution                                 linear_delta     # delta selection
-arm_length                                   216.47           # this is the length of an arm from hinge to hinge
-arm_radius                                   114.35           # this is the horiontal distance from hinge to hinge when the effector is centered
+arm_length                                   216.60           # this is the length of an arm from hinge to hinge
+arm_radius                                   120.00           # this is the horiontal distance from hinge to hinge when the effector is centered
 
 default_feed_rate                            4000             # Default rate ( mm/minute ) for G1/G2/G3 moves
 default_seek_rate                            4000             # Default rate ( mm/minute ) for G0 moves
@@ -24,7 +24,6 @@ junction_deviation                           0.05             # Similar to the o
 
 # Stepper module configuration
 microseconds_per_step_pulse                  1                # Duration of step pulses to stepper drivers, in microseconds
-minimum_steps_per_minute                     1200             # Never step slower than this
 base_stepping_frequency                      100000           # Base frequency for stepping, higher gives smoother movement
 
 # Stepper module pins ( ports, and pin numbers, appending "!" to the number will invert a pin )
@@ -89,7 +88,7 @@ temperature_control.hotend.i_factor          5.3            #
 temperature_control.hotend.d_factor          140.57         #
 
 # For bed
-temperature_control.bed.enable               false            #
+temperature_control.bed.enable               true            #
 temperature_control.bed.thermistor_pin       0.23             #
 temperature_control.bed.heater_pin           2.7              #
 temperature_control.bed.beta                 4036             #
@@ -163,16 +162,39 @@ beta_trim                                    -2.12              # software trim 
 gamma_trim                                   -1.84              # software trim for gamma stepper endstop (in mm)
 
 # optional Z probe http://smoothieware.org/zprobe
-zprobe.enable                                false           # set to true to enable a zprobe
+zprobe.enable                                true           # set to true to enable a zprobe
 zprobe.probe_pin                             1.29!^          # pin probe is attached to if NC remove the !
 zprobe.slow_feedrate                         5               # mm/sec probe feed rate
 #zprobe.debounce_count                       100             # set if noisy
 zprobe.fast_feedrate                         100             # move feedrate
 zprobe.probe_height                          5               # how much above bed to start probe
 
+zprobe.probe_radius                          70              # how far out from bed center to probe
+zprobe.decelerate_on_trigger                 false             # beneficial, unless your probe has no runout after it hits the trigger - in which case, set this to false
+zprobe.decelerate_runout                     0               # how many millimeters your probe can move past the trigger point; we'll abort any decel > this long
 # associated with zprobe the leveling strategy to use
-#leveling-strategy.delta-calibration.enable   true            # basic delta calibration
-#leveling-strategy.delta-calibration.radius   100             # the probe radius
+# leveling-strategy.delta-calibration.enable   true            # basic delta calibration
+# leveling-strategy.delta-calibration.radius   100             # the probe radius
+# If you have a Z probe, you can select a calibration strategy here
+# # To calculate probe_offset_x/y/z:
+# # - Heat up the hot end with filament loaded - and the print surface, if you
+# have bed heat (this is important!)
+# # - Jog the hot end down to the print surface, leaving a little dot of plastic
+# # - Deploy the probe, jog it until the probe tip touches the dot
+# # - Jog the probe up a little, remove the dot, jog it down until it triggers,
+# and record the exact values in offset_x/y/z
+# # PLEASE NOTE: probe_offset_x and probe_offset_y MUST be 0 if you want to use
+# depth (Z) correction!
+# # ---------------------------------------------------------------------
+# leveling-strategy.comprehensive-delta.enable true
+leveling-strategy.comprehensive-delta.enable true
+comprehensive-delta.probe_smoothing                       1                # if your probe has repeatability issues, this will probe multiple times & take the average (default 1)
+comprehensive-delta.probe_priming                         5                # if your probe keeps "creeping down", this will run it the specified number of times to get it to settle
+comprehensive-delta.probe_acceleration                    75               # acceleration will be temporarily set to this during probing; original is restored later; 100 is a good value
+comprehensive-delta.probe_offset_x                        0                # distance between the probe and the nozzle
+comprehensive-delta.probe_offset_y                        0                #
+comprehensive-delta.probe_offset_z                        0                #
+
 
 # Pause button
 pause_button_enable                          true             #
