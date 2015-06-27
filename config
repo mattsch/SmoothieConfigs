@@ -86,6 +86,9 @@ temperature_control.hotend.designator        T                #
 temperature_control.hotend.p_factor          54.59          #
 temperature_control.hotend.i_factor          5.3            #
 temperature_control.hotend.d_factor          140.57         #
+temperature_control.hotend.max_pwm           128            #
+temperature_control.hotend.i_max             128            #
+temperature_control.hotend.max_temp          235            #
 
 # For bed
 temperature_control.bed.enable               true            #
